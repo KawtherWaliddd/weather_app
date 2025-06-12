@@ -1,21 +1,16 @@
-# 🌦️ Weather App
+# weather_app
 
-A Flutter-based weather application that provides current weather details and a 4-day forecast for any searched city.
+A new Flutter project.
 
-## 
+## Getting Started
 
-- Search by city name
-- View current temperature, weather condition, humidity, and wind speed
-- 4-day weather forecast
-- Responsive and clean UI
-- Error handling and loading indicators
+This project is a starting point for a Flutter application.
 
-##  Technologies Used
+A few resources to get you started if this is your first Flutter project:
 
-- Flutter
-- Dart
-- Dio package
-- Weather API 
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-
-
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
