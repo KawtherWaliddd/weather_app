@@ -1,4 +1,5 @@
 class TodayWeatherModel {
+  final String cityName;
   final String lastUpdated;
   final double currentTemp;
   final double maxTemp;
@@ -7,6 +8,7 @@ class TodayWeatherModel {
   final String icon;
 
   TodayWeatherModel({
+    required this.cityName,
     required this.lastUpdated,
     required this.currentTemp,
     required this.maxTemp,
@@ -17,6 +19,7 @@ class TodayWeatherModel {
 
   factory TodayWeatherModel.fromJson(Map<String, dynamic> json) {
     return TodayWeatherModel(
+      cityName: json['location']['name'] ?? '',
       lastUpdated: json['current']['last_updated'] ?? '',
       currentTemp: (json['current']['temp_c'] as num?)?.toDouble() ?? 0.0,
       maxTemp:

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:weather_app/data/models/current_model.dart';
 import 'package:weather_app/data/services/endpoint.dart';
@@ -8,21 +9,16 @@ class WeatherServices {
   WeatherServices(this.dio);
 
   Future<TodayWeatherModel> getTodayWeather(String cityName) async {
+    final url =
+        '${Endpoint.baseUrl}${Endpoint.forecastEndpoint}?key=${Endpoint.apiKey}&q=$cityName&days=1';
+
     try {
-      final String requestUrl =
-          '${Endpoint.baseUrl}${Endpoint.forecastEndpoint}?key=${Endpoint.apiKey}&q=$cityName&days=1';
-
-      print("API Request URL: $requestUrl");
-
-      Response response = await dio.get(requestUrl);
-      Map<String, dynamic> jsonData = response.data;
-
-      print("API Response: $jsonData");
-
-      return TodayWeatherModel.fromJson(jsonData);
+      log("Fetching from: $url");
+      final response = await dio.get(url);
+      return TodayWeatherModel.fromJson(response.data);
     } catch (e) {
-      print("API Error: $e");
-      throw Exception("Failed to load weather data: $e");
+      log('Weather API error: $e');
+      rethrow;
     }
   }
 }

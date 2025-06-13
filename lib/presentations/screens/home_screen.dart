@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubit/get_current_weather/get_weather_state.dart';
 import 'package:weather_app/cubit/get_current_weather_cubit.dart';
+import 'package:weather_app/cubit/get_weather_state.dart';
+import 'package:weather_app/presentations/widgets/search_builder.dart';
 import 'package:weather_app/resources/app_text_style.dart';
 import 'package:weather_app/resources/colors_manager.dart';
-import 'package:weather_app/presentations/screens/search_screen.dart';
 import 'package:weather_app/presentations/screens/weather_screen.dart';
 import 'package:weather_app/presentations/widgets/no_weather_ingo.dart';
 
@@ -16,32 +16,30 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorsManager.cyanColor,
-        title: Text('Weather App', style: AppTextStyle.textStyleBold),
+        title: Text('Welcome Weather App', style: AppTextStyle.textStyleBold),
         centerTitle: true,
         actions: [
           IconButton(
+            icon: const Icon(Icons.search),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SearchScreen();
-                  },
-                ),
+                MaterialPageRoute(builder: (_) => SearchBuilder()),
               );
             },
-            icon: Icon(Icons.search),
           ),
         ],
       ),
       body: BlocBuilder<GetCurrentWeatherCubit, WeatherState>(
         builder: (context, state) {
           if (state is InitialState) {
-            return NoWeatherInfo();
+            return const NoWeatherInfo();
+          } else if (state is WeatherLoadingState) {
+            return const Center(child: CircularProgressIndicator());
           } else if (state is WeatherLoadedState) {
             return WeatherScreen(todayWeatherModel: state.todayWeatherModel);
           } else {
-            return Center(child: Text("There an error"));
+            return const Center(child: Text('There was an error 😢'));
           }
         },
       ),

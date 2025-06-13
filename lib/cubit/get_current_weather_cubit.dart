@@ -1,19 +1,17 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubit/get_current_weather/get_weather_state.dart';
-import 'package:weather_app/data/models/current_model.dart';
 import 'package:weather_app/data/services/weather_services.dart';
+import 'package:weather_app/cubit/get_weather_state.dart';
 
 class GetCurrentWeatherCubit extends Cubit<WeatherState> {
-  GetCurrentWeatherCubit() : super(InitialState());
+  final WeatherServices weatherServices;
+
+  GetCurrentWeatherCubit(this.weatherServices) : super(InitialState());
 
   getCurrentWeather(String cityName) async {
+    emit(WeatherLoadingState());
     try {
-      TodayWeatherModel todayWeatherModel = await WeatherServices(
-        Dio(),
-      ).getTodayWeather(cityName);
-      print(todayWeatherModel);
-      emit(WeatherLoadedState(todayWeatherModel: todayWeatherModel));
+      final todayWeather = await weatherServices.getTodayWeather(cityName);
+      emit(WeatherLoadedState(todayWeatherModel: todayWeather));
     } catch (e) {
       emit(WeatherFailureState());
     }
