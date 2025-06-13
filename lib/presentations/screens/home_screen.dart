@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubit/get_current_weather_cubit.dart';
-import 'package:weather_app/cubit/get_weather_state.dart';
+import 'package:weather_app/cubit/theme/change_theme.dart';
+import 'package:weather_app/cubit/weather/get_current_weather_cubit.dart';
+import 'package:weather_app/cubit/weather/get_weather_state.dart';
 import 'package:weather_app/presentations/widgets/search_builder.dart';
 import 'package:weather_app/resources/app_text_style.dart';
 import 'package:weather_app/resources/colors_manager.dart';
@@ -17,7 +18,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorsManager.cyanColor,
         title: Text('Welcome Weather App', style: AppTextStyle.textStyleBold),
-        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -26,6 +26,12 @@ class HomeScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (_) => SearchBuilder()),
               );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.dark_mode),
+            onPressed: () {
+              context.read<ThemeCubit>().toggleTheme();
             },
           ),
         ],
@@ -39,7 +45,12 @@ class HomeScreen extends StatelessWidget {
           } else if (state is WeatherLoadedState) {
             return WeatherScreen(todayWeatherModel: state.todayWeatherModel);
           } else {
-            return const Center(child: Text('There was an error 😢'));
+            return Center(
+              child: Text(
+                'There was an error 😢',
+                style: AppTextStyle.textStyleRegular,
+              ),
+            );
           }
         },
       ),

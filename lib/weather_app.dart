@@ -1,8 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubit/get_current_weather_cubit.dart';
-import 'package:weather_app/data/services/weather_services.dart';
+import 'package:weather_app/cubit/theme/change_theme.dart';
 import 'package:weather_app/presentations/screens/home_screen.dart';
 
 class WeatherApp extends StatelessWidget {
@@ -10,13 +8,26 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetCurrentWeatherCubit(WeatherServices(Dio())),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primaryColor: Colors.amber),
-        home: const HomeScreen(),
-      ),
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, themeMode) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            brightness: Brightness.light,
+            appBarTheme: AppBarTheme(
+              iconTheme: IconThemeData(color: Colors.white),
+            ),
+          ),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            appBarTheme: AppBarTheme(
+              iconTheme: IconThemeData(color: Colors.black),
+            ),
+          ),
+          themeMode: themeMode,
+          home: const HomeScreen(),
+        );
+      },
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubit/get_current_weather_cubit.dart';
+import 'package:weather_app/cubit/weather/get_current_weather_cubit.dart';
 import 'package:weather_app/resources/app_text_style.dart';
 import 'package:weather_app/resources/colors_manager.dart';
 

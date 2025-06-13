@@ -10,8 +10,9 @@ class NoWeatherInfo extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Center(
         child: Text(
-          'Welcome! Enter a city name to get real-time weather updates and a 4-day forecast 😊',
+          'Welcome! \n Enter a city name to get real-time weather updates and a 4-day forecast 😊',
           style: AppTextStyle.textStyleRegular,
+          textAlign: TextAlign.center,
         ),
       ),
     );
