@@ -28,9 +28,9 @@ The app is built using **Bloc (Cubit) state management** and supports **light & 
 ##  How It Works
 
 1. Enter a city name in the search field  
-2. Press the search icon 🔍  
+2. Press the search icon   
 3. Instantly see weather details (temperature, condition, etc.)  
-4. Switch between light and dark themes 🌗  
+4. Switch between light and dark themes   
 
 ---
 
