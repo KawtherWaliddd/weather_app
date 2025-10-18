@@ -34,5 +34,7 @@ The app is built using **Bloc (Cubit) state management** and supports **light & 
 
 ---
 
+##  Demo Video
 
+👉 [Watch Demo Video](https://drive.google.com/file/d/18LV4VS1yM938qk03KBXSKJdoxraxh_s2/view?usp=sharing)
 
