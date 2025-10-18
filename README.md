@@ -1,16 +1,38 @@
-# weather_app
+#  Weather App 🌦️
 
-A new Flutter project.
+A simple and beautiful Flutter **Weather App** that allows users to enter any city name and instantly get its **current weather information**.  
+The app is built using **Bloc (Cubit) state management** and supports **light & dark theming** for a modern UI experience.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+##  Features
 
-A few resources to get you started if this is your first Flutter project:
+-  Search for any city to get real-time weather data  
+-  Dynamic UI that adapts to current weather conditions  
+-  Light & Dark theme support  
+-  Built with **Cubit** for clean and reactive state management  
+-  Well-structured and scalable Flutter project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##  Technologies Used
+
+- **Flutter** — UI toolkit for building cross-platform apps  
+- **Bloc/Cubit** — State management  
+- **Dio** — For API requests  
+- **OpenWeatherMap API**   
+- **Theming** — Custom light & dark mode  
+
+---
+
+##  How It Works
+
+1. Enter a city name in the search field  
+2. Press the search icon 🔍  
+3. Instantly see weather details (temperature, condition, etc.)  
+4. Switch between light and dark themes 🌗  
+
+---
+
+
+
